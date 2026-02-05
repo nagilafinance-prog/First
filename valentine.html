@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Love Story ❤️</title>
+
+<style>
+
+/* BODY */
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#ff4f8b,#ffb6d5);
+  color:white;
+  text-align:center;
+}
+
+/* PASSWORD */
+#lock{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#ff4f8b,#ffb6d5);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+#lock input{
+  padding:12px;
+  border:none;
+  border-radius:25px;
+  width:220px;
+  margin:10px;
+  text-align:center;
+}
+
+#lock button{
+  padding:10px 25px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff2366;
+  font-size:16px;
+}
+
+/* INTRO VIDEO */
+#intro{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:black;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9998;
+}
+
+#intro video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+#enter{
+  position:absolute;
+  bottom:25px;
+  background:#ff2366;
+  color:white;
+  border:none;
+  padding:12px 25px;
+  border-radius:25px;
+  font-size:18px;
+}
+
+/* MAIN */
+#main{display:none;padding:20px;}
+
+.card{
+  background:rgba(255,255,255,0.25);
+  padding:25px;
+  border-radius:25px;
+  max-width:420px;
+  margin:auto;
+}
+
+/* SLIDER */
+.slider{
+  width:100%;
+  height:220px;
+  overflow:hidden;
+  border-radius:20px;
+  margin:15px 0;
+}
+
+.slider img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:1s;
+}
+
+/* BUTTON */
+button{
+  background:white;
+  color:#ff2366;
+  border:none;
+  padding:10px 20px;
+  border-radius:25px;
+  margin:6px;
+  width:90%;
+}
+
+/* TIMELINE */
+#timeline{display:none;padding:20px;}
+
+.title{
+  font-size:2rem;
+  margin:20px 0;
+}
+
+.year-box{
+  background:rgba(255,255,255,0.25);
+  margin:25px auto;
+  padding:25px;
+  border-radius:25px;
+  max-width:650px;
+  animation:fade 1s;
+}
+
+.year-box iframe{
+  width:100%;
+  height:300px;
+  border-radius:15px;
+  margin-top:10px;
+  border:none;
+}
+
+.story{
+  font-size:1rem;
+  line-height:1.6;
+  margin:10px 0;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<div id="lock">
+
+<h2>🔐 Enter Password</h2>
+
+<input type="password" id="pass">
+
+<button onclick="unlock()">Unlock ❤️</button>
+
+<p id="msg"></p>
+
+</div>
+
+
+<!-- VIDEO INTRO -->
+<div id="intro">
+
+<video autoplay muted playsinline loop>
+<source src="https://drive.google.com/uc?export=download&id=1wZykXogZ9hEhsiLVlcqp2jrc--xHrMv-" type="video/mp4">
+</video>
+
+<button id="enter" onclick="openSite()">Enter Our Story 💞</button>
+
+</div>
+
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- MAIN -->
+<div id="main">
+
+<div class="card">
+
+<h1>❤️ My Love ❤️</h1>
+
+<p>
+You are my happiness 💕<br>
+My peace ✨<br>
+My forever ♾️
+</p>
+
+<!-- FIXED: Default image added -->
+<div class="slider">
+<img id="slide"
+src="https://drive.google.com/uc?export=view&id=1ZGMTHFp8-bDS_4qeDb8oYlDIkThC5G50">
+</div>
+
+<h3>Will You Be My Valentine? 🌹</h3>
+
+<button onclick="yes()">Hanji 🙈💋</button>
+<button onclick="no()">No 😘</button>
+
+<p id="reply"></p>
+
+<button id="memBtn" style="display:none;" onclick="showTime()">
+💌 Our Journey
+</button>
+
+</div>
+
+</div>
+
+
+<!-- TIMELINE -->
+<div id="timeline">
+
+<h1 class="title">💞 Our Journey 💞</h1>
+
+<!-- Your timeline remains same -->
+
+</div>
+
+
+<script>
+
+/* PASSWORD */
+function unlock(){
+
+ let p=document.getElementById("pass").value;
+
+ if(p==="Chotu"){
+  document.getElementById("lock").style.display="none";
+  document.getElementById("intro").style.display="flex";
+ }else{
+  document.getElementById("msg").innerHTML="Wrong Password ❌";
+ }
+
+}
+
+/* ENTER */
+function openSite(){
+
+ document.getElementById("intro").style.display="none";
+ document.getElementById("main").style.display="block";
+
+ document.getElementById("music").play();
+
+}
+
+/* YES */
+function yes(){
+
+ document.getElementById("reply").innerHTML="I Love You Forever 😍💖";
+
+ document.getElementById("music").play();
+
+ setTimeout(()=>{
+  document.getElementById("memBtn").style.display="block";
+ },4000);
+
+}
+
+/* NO */
+let c=0;
+
+function no(){
+
+ c++;
+
+ if(c==1){
+  document.getElementById("reply").innerHTML="Please na 🙈❤️";
+ }else{
+  document.getElementById("reply").innerHTML="Hanji bolo 😤😂";
+ }
+
+}
+
+/* TIMELINE */
+function showTime(){
+
+ document.getElementById("timeline").style.display="block";
+
+ document.getElementById("timeline")
+ .scrollIntoView({behavior:"smooth"});
+
+}
+
+/* SLIDER */
+let pics=[
+ "https://drive.google.com/uc?export=view&id=1ZGMTHFp8-bDS_4qeDb8oYlDIkThC5G50",
+ "https://drive.google.com/uc?export=view&id=1MElXus99uGip5puLlR2xzUcVTbSc7Siy",
+ "https://drive.google.com/uc?export=view&id=1Yo2K2hMGooo72arO7xhNK1VZuL0MVflN",
+ "https://drive.google.com/uc?export=view&id=1utY8g0doiMziEmEgUV5xPbQYB5DlicZL",
+ "https://drive.google.com/uc?export=view&id=1V6EikCTQ7UIio2owi95WSU4Geuz8YJX8"
+];
+
+let i=0;
+
+let slide=document.getElementById("slide");
+
+/* Slider auto */
+setInterval(()=>{
+
+ i=(i+1)%pics.length;
+ slide.src=pics[i];
+
+},2500);
+
+</script>
+
+</body>
+</html>
